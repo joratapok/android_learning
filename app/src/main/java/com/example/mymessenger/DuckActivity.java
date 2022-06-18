@@ -8,6 +8,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class DuckActivity extends AppCompatActivity {
@@ -42,11 +43,16 @@ public class DuckActivity extends AppCompatActivity {
     }
 
     public void onToggleButtonClick(View view) {
+        CharSequence text = "hello, I'm toast";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(this, text, duration);
         boolean on = ((ToggleButton) view).isChecked();
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         String spinString = String.valueOf(spinner.getSelectedItem());
         if (on) {
-            System.out.println(spinString);
+            if (spinString.equals("dark")) {
+                toast.show();
+            }
         } else {
             System.out.println(spinString);
         }
